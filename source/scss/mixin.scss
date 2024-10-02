@@ -1,0 +1,219 @@
+//$MIXIN (START)
+//*FLEX-BOX GRID-LOYOUT                      (START)
+//@include flexbox(space-between, center, column, 20px);
+@mixin flexbox($justify, $align, $direction: null, $gap: null) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+
+  @if $direction {
+    flex-direction: $direction;
+  }
+
+  @if $gap {
+    gap: $gap;
+  }
+}
+
+//@include grid(2, 1fr, (50px 20px));
+@mixin grid($columns: 2, $resize-column: 1fr, $gap: (30px)) {
+  display: grid;
+  grid-template-columns: repeat($columns, $resize-column);
+  gap: $gap; //row-gap + column-gap
+}
+
+//*FLEX-BOX GRID-LOYOUT                      (END)
+
+
+//*Animation---------------------------------( START )
+//@include animation-delays($selector:'.box__image', $total-items: 4, 0.4s, 0.2s, $ifElse: true/false);
+//&:nth-child().animation #{$selector} - true
+//&.animation #{$selector}:nth-child() - false
+@mixin animation-delays($selector, $total-items, $initial-delay: 0.2s, $delay-increment: 0.2s, $ifElse) {
+  @for $i from 1 through $total-items {
+
+    @if($ifElse) {
+      &:nth-child(#{$i}).animation #{$selector} {
+        transition-delay: $initial-delay + ($delay-increment * ($i - 1));
+      }
+    }
+
+    @else {
+      &.animation #{$selector}:nth-child(#{$i}) {
+        transition-delay: $initial-delay + ($delay-increment * ($i - 1));
+      }
+    }
+
+  }
+}
+
+//@include animation-play-cards(0.5s);
+@mixin animation-play-cards($transition-delay: 0s) {
+
+  transform: translate(0%, 10%);
+  opacity: 0;
+
+  &.animation,
+  .animation & {
+    transform: translate(0px, 0%);
+    opacity: 1;
+    transition: all .8s ease-in-out $transition-delay;
+  }
+}
+
+//@include animation-view(0.5s);
+@mixin animation-view($transition-delay: 0s) {
+  transform: translate(0%, 10%);
+  opacity: 0;
+
+  &.animation,
+  .animation & {
+    transform: translate(0px, 0%);
+    opacity: 1;
+
+    transition: all .7s ease-in-out $transition-delay;
+  }
+}
+
+//*Animation---------------------------------( END )
+
+
+
+
+//* button mixin                    (START)
+// @include buttonDefault(#fff,#000);
+@mixin buttonDefault($background-color: #fff, $text-color: #000) {
+  @extend %resetButton; //template
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: $background-color;
+  color: $text-color;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken($background-color, 10%);
+  }
+}
+
+//* button mixin          (END)
+
+
+//* burger mixin                (START)
+//@include burgerDefault(open);
+@mixin burgerDefault($className, $bgcolor: null) {
+  all: initial;
+  cursor: pointer;
+  border: none;
+  width: 30px;
+  height: 20px;
+  position: relative;
+
+
+  &::after,
+  &::before,
+  & span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: $bgcolor;
+    transition: all .3s ease;
+  }
+
+  &::after,
+  &::before {
+    content: '';
+  }
+
+  &::after {
+    top: 0;
+  }
+
+  &::before {
+    bottom: 0;
+  }
+
+  & span {
+    top: 50%;
+    transform: translateY(-50%) scale(1);
+  }
+
+  //ACTIVE
+  &.#{$className}::before {
+    bottom: 50%;
+    transform: translateY(50%) rotate(45deg);
+    transition-delay: 0.1s;
+  }
+
+  &.#{$className}::after {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+    transition-delay: 0.1s;
+  }
+
+  &.#{$className} span {
+    transform: translateX(-150%) scale(0);
+  }
+
+  //ACTIVE
+}
+
+//* burger mixin               (EMD)
+
+
+//*Background                   (START)
+//@include background('@img/playcardsbg.jpg', null, no-repeat, null, center, cover);
+@mixin background($image, $color: null, $repeat: null, $attachment: null, $position: null, $size: null, ) {
+  background-image: url(#{$image});
+
+  @if $color !=null {
+    background-color: $color;
+  }
+
+  @if $repeat !=null {
+    background-repeat: $repeat;
+  }
+
+  @if $size !=null {
+    background-size: $size;
+  }
+
+  @if $position !=null {
+    background-position: $position;
+  }
+
+
+  @if $position !=null {
+    background-attachment: $attachment;
+  }
+
+
+
+}
+
+//@include background-image-webp('/img/image.webp');
+@mixin background-image-webp($image-path) {
+  @supports (background-image: url(#{$image-path})) {
+    background-image: url(#{$image-path});
+  }
+}
+
+//*Background               (EMD)
+//$MIXIN (END)
+
+//*RESET BUTTON                     (START)
+//@extend %resetButton;
+%resetButton {
+  all: unset;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+//*RESET BUTTON                         (END)
+//$ template (END)
