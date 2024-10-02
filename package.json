@@ -1,5 +1,5 @@
 {
-  "name": "gulp-fls-comment",
+  "name": "schwarz",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -9,7 +9,7 @@
     "dev": "gulp"
   },
   "keywords": [],
-  "author": "",
+  "author": "schwarz",
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^2.29.1",
