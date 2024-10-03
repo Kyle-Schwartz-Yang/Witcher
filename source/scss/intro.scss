@@ -1,0 +1,535 @@
+//* INTRO STYLE                      (START)
+.intro {
+  width: 100%;
+
+  &__wrapper {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  //intro__slide 
+  &__slide {
+    width: 100%;
+    min-height: 100%;
+    @include flexbox(center, center);
+    padding: 9.375rem 0px;
+    box-shadow: inset 33px 1px 130px #000;
+
+    //!intro__slide  media
+    @media (max-width: 75rem) {
+      padding: 12.5rem 0px;
+    }
+
+    @media (max-width: 48rem) {
+      padding: 7.5rem 0px 4.375rem;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 29.9375rem) {
+      padding: 7.5rem 0px 3.75rem;
+      align-items: flex-start;
+    }
+
+    //!intro__slide  media
+
+    //intro__slide--merchants
+    &--merchants {
+      @include background('@img/MerchantsOfir.jpg', null, no-repeat, null, center, cover, );
+      @include background-image-webp('@img/MerchantsOfir.webp');
+
+      //ANIMATION for only intro__slide--merchants
+      & .intro__title,
+      & .intro__txt,
+      & .intro__btn,
+      & .intro__media {
+
+        // transform: translate(10%, 0%);
+        transform: translate(1.75rem, 2.375rem);
+        opacity: 0;
+        // transition: all .66s ease 0s;
+
+        transition: all .8s ease 0s;
+
+        &.animation {
+          transform: translate(0, 0);
+          opacity: 1;
+        }
+      }
+
+      & .intro__title {
+        transition-delay: .1s;
+      }
+
+      & .intro__txt {
+        transition-delay: .3s;
+      }
+
+      & .intro__btn {
+        transition-delay: .4s;
+      }
+
+      & .intro__media {
+        transition-delay: 0s;
+
+      }
+
+      //ANIMATION for only intro__slide--merchants
+    }
+
+    //intro__slide--sun
+    &--sun {
+      @include background('@img/blacksun.jpg', null, no-repeat, null, left, cover, );
+      @include background-image-webp('@img/blacksun.webp');
+    }
+
+    //intro__slide--price
+    &--price {
+      @include background('@img/priceofpower.jpg', null, no-repeat, null, top, cover, );
+      @include background-image-webp('@img/priceofpower.webp');
+
+      & .intro__txt {
+        color: #000;
+        font-weight: 600;
+      }
+    }
+
+    //intro__slide--yennefer
+    &--yennefer {
+      @include background('@img/yenneferbg.jpg', null, no-repeat, null, top, cover, );
+      @include background-image-webp('@img/yenneferbg.webp');
+    }
+
+    //intro__slide--mirror
+    &--mirror {
+      @include background('@img/mistermirrorbg.jpg', null, no-repeat, null, top, cover, );
+      @include background-image-webp('@img/mistermirrorbg.webp');
+    }
+  }
+
+  &__container {
+    display: flex;
+
+    @media (max-width: 75rem) {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  &__content {
+    flex: 0 1 50%;
+    overflow: hidden;
+
+    @media (max-width: 75rem) {
+      flex: 0 1 100%;
+    }
+  }
+
+  &__body {
+    @include flexbox(center, center, column);
+    height: 100%;
+    padding: .625rem 2.5rem .625rem 0rem;
+
+    @media (max-width: 75rem) {
+      padding: 0px 0px 6.25rem 0px;
+    }
+
+    @media (max-width: 36rem) {
+      padding: 0px 0px 4.375rem 0px;
+    }
+
+  }
+
+  &__title {
+    width: 100%;
+    color: #fff;
+    text-align: center;
+    text-shadow: 1px 1px 1px hsla(0, 94%, 50%, 0.58);
+    font-size: 3.4375rem;
+    font-family: 'Frijole-Regular';
+
+
+    &:not(:last-child) {
+      margin: 0px 0px 1.875rem 0px;
+    }
+
+    @media (max-width: 29.9375rem) {
+      font-size: 2.1875rem;
+    }
+  }
+
+  &__txt {
+    color: $color-txt;
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 135%;
+    text-align: center;
+    flex: 0 1 auto;
+
+    &:not(:last-child) {
+      margin: 0px 0px 1.875rem 0px;
+    }
+
+    @media (max-width: 75rem) {
+      max-width: 80%;
+    }
+
+    @media (max-width: 48rem) {
+      max-width: 100%;
+    }
+
+    @media (max-width: 29.9375rem) {
+      font-size: 1rem;
+
+    }
+
+  }
+
+  &__btn {
+
+    width: 66%;
+    height: 5.625rem;
+    font-size: 1.5625rem;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px hsla(0, 0%, 100%, .58);
+    @include background('@img/buttonIntro.png', transparent, no-repeat, null, center, contain);
+    @include background-image-webp('@img/buttonIntro.webp');
+    transition: filter .33s ease;
+
+    &:hover {
+      color: $color-accent;
+      text-shadow: 1px 1px 1px hsla(0, 0%, 0%, 0.58);
+      transition: all .33s ease;
+      filter: contrast(120%);
+    }
+
+    @media (max-width: 36rem) {
+      font-size: 1.25rem;
+      height: 4.375rem;
+    }
+
+    @media (max-width: 29.9375rem) {
+      width: 100%;
+      height: 3.75rem;
+    }
+  }
+
+  // .intro__media-modal
+  &__media-modal {}
+
+  //.intro__media
+  &__media {
+    flex: 0 1 50%;
+    position: relative;
+    cursor: pointer;
+    border: 2px solid #000;
+    box-shadow: 2px 2px 30px #000;
+    border-radius: 10px;
+    overflow: hidden;
+    max-height: 400px;
+
+    @media (max-width: 75rem) {
+      // flex: 0 1 100%;
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    &:hover .intro__media-button {
+      transition: all .33s ease;
+      transform: translate(-50%, -50%) scale(1.4);
+    }
+
+
+  }
+
+  //.intro__media-image
+  &__media-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 56.26% 0px 0px 0px;
+
+    overflow: hidden;
+
+
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 100%;
+
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  //.intro__media-button
+  &__media-button {
+    @extend %resetButton;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: 99;
+    transform: translate(-50%, -50%) scale(1);
+    width: 100px;
+    height: 100px;
+    transition: all .33s ease;
+
+    & img {
+      max-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media (max-width: 576px) {
+      width: 5.625rem;
+      height: 5.625rem;
+    }
+  }
+
+
+  //.intro__swiper
+  &__swiper {
+
+    //.intro__swiper .swiper-pagination-bullet
+    & .swiper-pagination-bullet {
+      width: 1.4375rem;
+      height: 1.4375rem;
+      background-color: $color-gray;
+      clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+      transition: transfrom .66s ease;
+    }
+
+
+    & .swiper-pagination-bullet-active {
+      background-color: $color-accent;
+      transform: scale(1.1) rotate((45deg));
+      transition: all .66s ease;
+    }
+  }
+
+}
+
+//* INTRO STYLE                      (END)
+
+//---------------------------------------------------
+
+//* MEDIA MODAL                        (START)
+.media-modal {
+  // display: none;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, .7);
+
+
+
+  @supports (backdrop-filter: blur(.5625rem)) {
+    &::after {
+      content: '';
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(.5625rem);
+    }
+  }
+
+  //.media-modal.modal--open
+  &.modal--open {
+    // display: block;
+    visibility: visible;
+    opacity: 1;
+    overflow: auto;
+  }
+
+
+
+  // .media-modal__close
+  &__close {}
+
+  // .media-modal__wrapper
+  &__wrapper {}
+
+  // .media-modal__box
+
+  &__box {
+    @include flexbox(center, center);
+    height: 100%;
+  }
+
+  // .media-modal__content
+
+  &__content {
+    width: 60%;
+    z-index: 1999; //?Обрати внимания
+    overflow: hidden;
+
+    @media (max-width: 992px) {
+      width: 90%;
+    }
+  }
+
+  // .media-modal__video
+
+  &__video {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-bottom: 56.25%;
+
+    & iframe {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+//* MEDIA MODAL                         (END)
+
+//---------------------------------------------------
+
+//* CONTENT MODAL                 (START)
+.content-modal {
+  //$ display: none;
+  // overflow: auto;
+  visibility: hidden;
+  overflow: hidden;
+  opacity: 0;
+
+  @include background('@img/modalcardbg.jpg', null, no-repeat, null, center, cover, );
+  @include background-image-webp('@img/modalcardbg.webp');
+
+  &.modal--open {
+    //$ display: block;
+    visibility: visible;
+    opacity: 1;
+    overflow: auto;
+  }
+
+  // .content-modal__close
+  &__close {}
+
+  // .content-modal__wrapper
+  &__wrapper {}
+
+
+  // .content-modal__container
+  &__container {
+    padding-top: 6.25rem;
+    padding-bottom: 6.25rem;
+    min-height: 100%;
+    @include flexbox(center, center);
+
+  }
+
+  // .content-modal__items
+  &__items {
+    @include grid(2, 1fr, 2.5rem);
+
+    @media (max-width: 75rem) {
+      @include grid(1, auto, 2.5rem);
+    }
+
+  }
+
+  // .content-modal__item
+  &__item {
+    display: flex;
+
+    @media (max-width: 48rem) {
+      @include flexbox(center, center, column);
+    }
+  }
+
+  // .content-modal__card
+  &__card {
+    flex: 0 1 25%;
+    min-width: 12.5rem;
+    max-width: 12.5rem;
+    max-height: 18.75rem;
+
+    @media (max-width: 48rem) {
+      flex: 0 1 auto;
+    }
+
+    //$ continuation in overall
+  }
+
+  // .content-modal__body
+
+  &__body {
+    flex: 0 1 auto;
+    padding: .625rem .625rem 0px 2.5rem;
+
+    @media (max-width: 48rem) {
+      padding: 1.25rem .3125rem 0px;
+    }
+  }
+
+  // .content-modal__label
+
+  &__label {
+    color: $color-ognac;
+    font-size: .875rem;
+
+    &:not(:last-child) {
+      margin: 0px 0px .625rem 0px;
+    }
+  }
+
+  // .content-modal__title
+
+  &__title {
+    color: $color-ognac;
+    font-size: 1.6875rem;
+    text-transform: uppercase;
+    padding: 0px 0px .625rem 0px;
+    border-bottom: 1px solid $color-ognac;
+
+    &:not(:last-child) {
+      margin: 0px 0px .625rem 0px;
+    }
+  }
+
+  // .content-modal__txt
+
+  &__txt {
+    font-size: 1rem;
+    line-height: 120%;
+
+    & p {
+      &:not(:last-child) {
+        margin: 0px 0px .3125rem 0px;
+      }
+    }
+
+    &:not(:last-child) {
+      margin: 0px 0px .625rem 0px;
+    }
+  }
+
+  // .content-modal__quote
+
+  &__quote {
+    color: $color-ognac;
+    font-size: .875rem;
+  }
+}
+
+//* CONTENT MODAL                 (END)
+
+
+//---------------------------------------------------
