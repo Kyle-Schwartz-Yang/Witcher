@@ -1,4 +1,12 @@
 
+//*IMPORT Module ( START )
+import * as ssFunction from "./modules/functions.js"
+const introSwiper = ssFunction.createIntroSwiper('.intro__swiper');
+
+
+//*IMPORT Module ( END )
+
+
 
 //*Burger menu (START)
 
