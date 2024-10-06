@@ -1,0 +1,225 @@
+.views {
+  padding: 6.25rem 0px;
+  @include background('@img/viewsbackground.jpg', null, no-repeat, null, bottom, cover);
+  @include background-image-webp('@img/viewsbackground.webp');
+
+  @media (max-width: 48rem) {
+    padding: 3.125rem 0px;
+  }
+
+  // .views__container
+  &__container {}
+
+  // .views__title
+  &__title {
+
+    @include animation-view(0s);
+
+    text-align: center;
+    font-size: 3.125rem;
+    text-transform: capitalize;
+    font-weight: 500;
+
+    color: $color-ognac;
+    border-bottom: 2px solid $color-ognac;
+    padding: 0px 0px .3125rem 0px;
+
+    &:not(:last-child) {
+      margin: 0px 0px 2.5rem 0px;
+    }
+  }
+
+  // .views__filter
+  &__filter {}
+
+  // .views__items
+  &__items {}
+}
+
+.filter-views {
+  @include flexbox(flex-start, center, null, null);
+  flex-wrap: wrap;
+  @include animation-delays('.filter-views__button', 4, 0s, 0.2s, false);
+
+  &.animation .filter-views__button {
+    transform: translate(0%, 0%);
+    transition: all .7s ease .7s;
+    opacity: 1;
+  }
+
+  &:not(:last-child) {
+    margin: 0px 0px 3.125rem 0px;
+  }
+
+  @media (max-width: 29.9375rem) {
+    @include flexbox(center, center, null, null);
+  }
+
+  // .filter-views__button
+  &__button {
+
+
+    transform: translate(10%, 0%);
+    opacity: 0;
+    @include buttonDefault($color-ognac, $color-txt);
+    text-transform: uppercase;
+    font-size: .875rem;
+
+
+    &:not(:last-child) {
+      margin: 0px .9375rem 0px 0px;
+    }
+
+
+    &.active {
+      background-color: darken($color-ognac, 10%);
+    }
+
+    @media (max-width: 48rem) {
+      padding: .625rem;
+    }
+
+    @media (max-width: 29.9375rem) {
+
+
+
+      flex: 0 1 60%;
+      @include animation-view(0s);
+
+      // margin: 0px 0px .9375rem 0px;
+      &:not(:last-child) {
+        margin: 0px 0px .625rem 0px;
+      }
+
+      font-size: .55rem;
+    }
+  }
+}
+
+.view {
+  @include grid(3, minmax(250px, 1fr), (1.875rem));
+
+  @media (max-width: 992px) {
+    @include grid(2, minmax(200px, 1fr), (.9375rem));
+  }
+
+  @media (max-width: 479px) {
+    @include grid(1, minmax(200px, 1fr), (1.5625rem));
+  }
+
+  // .view__item
+  &__item {
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  // .view__page
+  &__page {
+
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transform: translate(0, 5%);
+    opacity: 0;
+    border-image-source: url('@img/framegold.png');
+    border-style: solid;
+    border-image-slice: 5 5 5 5 fill;
+    border-width: 8px 8px 8px;
+    border-image-outset: 0;
+
+
+    &.animation {
+      transform: translate(0px, 0%);
+      opacity: 1;
+      transition: all .66s ease .3s;
+    }
+
+    &:hover .view__item-image {
+      transform: scale(1.05);
+      transition: all .33s ease;
+    }
+
+  }
+
+
+  // .view__item-image
+  &__item-image {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 56.26% 0px 0px 0px;
+    overflow: hidden;
+    transition: all .33s ease;
+
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  // .view__body
+
+  &__body {
+    overflow: hidden;
+    @include animation-view(0s);
+    text-align: center;
+    border: 2px solid $color-accent;
+    padding: 1.25rem;
+    border-radius: .625rem;
+
+    &--nilfgaard {
+      background-color: rgba(161, 123, 52, 0.1);
+    }
+
+    &--monster {
+      background-color: rgba(165, 53, 29, 0.1);
+    }
+
+    &--scoiatael {
+      background-color: rgba(52, 54, 161, 0.1);
+    }
+
+    &:not(:last-child) {
+      margin: 0px 0px .625rem 0px;
+    }
+  }
+
+
+  // .view__title
+  &__title {
+    @include animation-view(.2s);
+    font-size: 1.875rem;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    color: $color-ognac;
+    border-bottom: 1px solid $color-ognac;
+    padding: 0px 0px .3125rem 0px;
+
+    &:not(:last-child) {
+      margin: 0px 0px .625rem 0px;
+    }
+
+    @media (max-width: 479px) {
+      font-size: 1rem;
+    }
+
+  }
+
+
+  // .view__text
+  &__text {
+    @include animation-view(.2s);
+    font-size: 1rem;
+    color: $color-txt;
+  }
+}
