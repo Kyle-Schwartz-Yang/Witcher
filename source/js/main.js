@@ -95,6 +95,34 @@ if (animItems.length > 0) {
 //* --------------------------------------------------------ANIMATION ( END )
 
 
+//*-----------------------------------------Scroll menu nav (START)
+
+const anchors = document.querySelectorAll('.menu__link');
+if (anchors.length > 0) {
+  anchors.forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const anchorId = anchor.dataset.gota;
+      const anchorBlock = document.getElementById(`${anchorId}`);
+
+      if (anchorBlock && anchorId) {
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        const gotoBlockScroll = anchorBlock.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+
+        if (menu.classList.contains('open')) {
+          toggleMenu();
+        }
+        window.scrollTo({ behavior: 'smooth', top: gotoBlockScroll, });
+        e.preventDefault();
+      }
+    });
+  });
+
+}
+//*------------------------------------------Scroll menu nav (END)
+
+
+
 //*                                    MODAL__(START)
 
 //$Global setting
@@ -281,6 +309,52 @@ readMoreButton.addEventListener('click', function () {
 
 //*                                 READ MORE (END)                                          
 
+
+//*--------------------------------------Filter Factions (START)---------------------------
+
+
+// Удаление активных классов у кнопок и контента
+function removeActiveClasses() {
+  filterButton.forEach(button => { button.classList.remove('active') });
+  filterContent.forEach(content => { content.classList.remove('active') });
+};
+
+// Добавление класса active контенту
+function filterContentOpen(buttonAttribut) {
+  filterContent.forEach(content => {
+    const contentAttribut = content.dataset.filter;
+    //-----------------------------
+    (contentAttribut.includes(buttonAttribut) || !buttonAttribut) ?
+      content.classList.add('active') : content.classList.remove('active');
+    animOnScroll();
+    //-----------------------------
+  });
+};
+
+
+const filterButton = document.querySelectorAll('.filter-views__button');
+const filterContent = document.querySelectorAll('.view__item');
+
+//!Объвляем действия по нажатию на кнопку.
+for (let button of filterButton) {
+  button.addEventListener('click', function (e) {
+    //-----------------------------
+    const buttonAttribut = button.dataset.filter;
+    //-----------------------------
+    removeActiveClasses();
+    // Добавление класса active контенту и кнопке
+    button.classList.add('active');
+    filterContentOpen(buttonAttribut);
+    //-----------------------------
+  });
+  //-----------------------------
+  //Клик по 3 кнопке!
+  if (button === filterButton[2]) {
+    button.click();
+  }
+}
+
+//*--------------------------------------Filter Factions (END)-----------------------------
 
 
 
