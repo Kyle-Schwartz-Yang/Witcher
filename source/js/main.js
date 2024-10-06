@@ -257,7 +257,29 @@ for (const openButton of modalContentOpenButtons) {
 //*                                    MODAL__(END)
 
 
+//*                                 READ MORE (START)                                        
 
+
+// Находим кнопку и тело текста
+const readMoreButton = document.querySelector('.play-cards__button');
+const readMoreBody = document.querySelector('.play-cards__content');
+
+//! Добавляем обработчик события при клике на кнопку
+readMoreButton.addEventListener('click', function () {
+  
+  readMoreBody.classList.toggle('visible');
+
+
+  // Изменяем текст кнопки
+  if(readMoreBody.classList.contains('visible')) {
+    readMoreButton.innerText = 'Read Less';
+  }else {
+    readMoreButton.innerText = 'Read more';
+  }
+
+});
+
+//*                                 READ MORE (END)                                          
 
 
 

@@ -1,0 +1,174 @@
+.play-cards {
+  padding: 9.375rem 0px;
+  @include background('@img/playcardsbackground.jpg', null, no-repeat, fixed, bottom, cover);
+  @include background-image-webp('@img/playcardsbackground.webp');
+  box-shadow: inset 1px 1px 18.75rem #000;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: .625rem;
+    left: 0;
+    top: 0px;
+    z-index: 1;
+    @include background('@img/line__gold.png', null, no-repeat, null, top, cover);
+    @include background-image-webp('@img/line__gold.webp');
+
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -.3125rem;
+    left: 0;
+    width: 100%;
+    height: .625rem;
+    @include background('@img/line__gold.png', null, no-repeat, null, bottom, cover);
+    @include background-image-webp('@img/line__gold.webp');
+
+  }
+
+  @media (max-width: 48rem) {
+    padding: 3.75rem 0px;
+  }
+
+
+  // .play-cards__container
+  &__container {
+    @include flexbox(space-around, flex-start, null, null);
+
+    @media (max-width: 768px) {
+      @include flexbox(center, center, column-reverse, null);
+
+    }
+  }
+
+
+  // .play-cards__body
+  &__body {
+    flex: 0 1 60%;
+    padding: 0px 1.25rem 0px 0px;
+
+    @media (max-width: 48rem) {
+      flex: 0 1 auto;
+      text-align: center;
+      padding: 0px;
+    }
+  }
+
+  // .play-cards__label
+  &__label {
+    @include animation-play-cards(0s);
+    color: $color-ognac;
+    font-size: .875rem;
+
+    &:not(:last-child) {
+      margin: 0px 0px .925rem 0px;
+    }
+  }
+
+  // .play-cards__subtitle
+  &__title {
+
+    @include animation-play-cards(0.2s);
+    color: $color-ognac;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    padding: 0 0 .625rem 0;
+    border-bottom: 1px solid $color-ognac;
+
+    &:not(:last-child) {
+      margin: 0px 0px 1.25rem 0px;
+    }
+  }
+
+
+  // .play-cards__txt
+  &__content {
+    @include animation-play-cards(0.4s);
+    font-size: 1.125rem;
+    line-height: 1.3;
+    color: $color-txt;
+
+    &:not(:last-child) {
+      margin: 0px 0px 1.25rem 0px;
+    }
+
+    &.visible>p>.play-cards__hidden {
+      display: inline-block;
+    }
+
+    &.visible>p>.play-cards__dots {
+      display: none;
+    }
+
+
+  }
+
+
+  &__dots {
+    display: inline-block;
+    color: $color-ognac;
+    font-weight: 700;
+    letter-spacing: 0.125rem;
+  }
+
+
+  &__hidden {
+    display: none;
+  }
+
+  // .play-cards__quote
+  &__button {
+    @include animation-play-cards(0.44s);
+    @include buttonDefault($color-ognac, $color-txt);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+  }
+
+
+  &__box {
+    flex: 0 1 auto;
+    width: 16.625rem;
+    height: 25rem;
+
+    @media (max-width: 768px) {
+      margin: 0px 0px 40px 0px;
+    }
+
+    @media (max-width: 29.9375rem) {
+      width: 14.5625rem;
+      height: 21.875rem;
+    }
+  }
+
+  // .play-cards__wrapper
+
+  &__wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  // .play-cards__slide
+  &__slide {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+  }
+
+  // .play-cards__image
+
+  &__image {
+    width: 100%;
+    height: 100%;
+
+    & img {
+      max-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
