@@ -95,6 +95,34 @@ if (animItems.length > 0) {
 //* --------------------------------------------------------ANIMATION ( END )
 
 
+//*-----------------------------------------Scroll menu nav (START)
+
+const anchors = document.querySelectorAll('.menu__link');
+if (anchors.length > 0) {
+  anchors.forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const anchorId = anchor.dataset.gota;
+      const anchorBlock = document.getElementById(`${anchorId}`);
+
+      if (anchorBlock && anchorId) {
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        const gotoBlockScroll = anchorBlock.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+
+        if (menu.classList.contains('open')) {
+          toggleMenu();
+        }
+        window.scrollTo({ behavior: 'smooth', top: gotoBlockScroll, });
+        e.preventDefault();
+      }
+    });
+  });
+
+}
+//*------------------------------------------Scroll menu nav (END)
+
+
+
 //*                                    MODAL__(START)
 
 //$Global setting
