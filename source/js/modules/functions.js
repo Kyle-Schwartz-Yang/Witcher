@@ -22,8 +22,17 @@ export function createIntroSwiper(selector) {
 }
 
 
-
-
+export function createCardsSwiper(selector) {
+  return new Swiper(selector, {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+    grabCursor: true,
+    effect: "cards",
+    speed: 700,
+    autoplay: { delay: 4000 },
+  });
+}
 
 
 

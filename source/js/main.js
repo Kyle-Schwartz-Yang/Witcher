@@ -2,6 +2,7 @@
 //*IMPORT Module ( START )
 import * as ssFunction from "./modules/functions.js"
 const introSwiper = ssFunction.createIntroSwiper('.intro__swiper');
+ssFunction.createCardsSwiper('.play-cards-swiper');
 
 
 //*IMPORT Module ( END )
